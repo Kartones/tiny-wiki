@@ -1,0 +1,63 @@
+
+body {
+  padding: 1em;
+}
+
+#theme-switcher {
+  position: fixed;
+  top: 0.5em;
+  right: 1em;
+  padding: 0.25em;
+  background-color: #000;
+  color: var(--lt-color-gray-200);
+  font-size: 0.8em;
+  z-index: 9999;
+  width: fit-content;
+}
+
+#scroll-up {
+  position: fixed;
+  top: 0.5em;
+  right: 3.5em;
+  padding: 0.25em;
+  background-color: #000;
+  color: var(--lt-color-gray-200);
+  font-size: 0.8em;
+  z-index: 9999;
+  width: fit-content;
+}
+
+img, video {
+  display: block;
+  margin: 1em 0;
+}
+
+.grid {
+  grid-template-columns: 1fr 5fr 1fr;
+}
+
+#navigation li {
+  font-size: 0.7em;
+  padding-bottom: 0%;
+  padding-top: 0%;
+}
+
+#headings li {
+  font-size: 0.7em;
+  padding-bottom: 0%;
+  padding-top: 0%;
+}
+
+li.level-2 {
+  padding-left: 1em;
+}
+li.level-3 {
+  padding-left: 2em;
+}
+li.level-4 {
+  padding-left: 3em;
+}
+
+.sub {
+  padding-left: 1.5em;
+}
