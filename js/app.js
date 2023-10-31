@@ -52,7 +52,8 @@
     );
   }
 
-  async function loadPage(pagePath) {
+  async function loadPage(pageIndex) {
+    const pagePath = pages[pageIndex];
     const [page, section, subSection] = splitPath(pagePath);
 
     await Promise.all([fetch(`${pagePath}?v=${timestampMark}`)])
@@ -68,6 +69,8 @@
           loadHeadings(extractHeadings(content));
 
           window.scrollTo(0, 0);
+
+          window.location.hash = `#p=${pageIndex}`;
         } else {
           document.getElementById("content").innerHTML = marked.parse(
             `# Error loading page '${section}/${
@@ -160,14 +163,18 @@
     document.getElementById("navigation").addEventListener("click", (event) => {
       if (event.target.tagName === "A") {
         event.preventDefault();
-        loadPage(pages[event.target.dataset.index]);
+        loadPage(event.target.dataset.index);
       }
     });
 
     marked.use({ renderer });
 
     await readPagesList();
-    await loadPage(pages[0]);
+
+    let page = parseInt(
+      new URL(document.location).hash.replace("#", "").split("=")[1] ?? 0
+    );
+    await loadPage(page);
   }
 
   initialLoad();
