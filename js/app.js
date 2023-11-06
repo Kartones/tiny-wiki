@@ -103,7 +103,7 @@
     // exclude headings inside code blocks (by removing them)
     pageContent = pageContent.replace(/```[\s\S]*?```/g, "");
     const headings = pageContent.match(/^(#+)\s+(.+)$/gm);
-    return headings.map((heading) => {
+    return (headings ?? []).map((heading) => {
       const [_, level, text] = heading.match(/^(#+)\s+(.+)$/);
       return { level: level.length, text };
     });
