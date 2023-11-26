@@ -1,6 +1,9 @@
 "use strict";
 
 (function () {
+  // End in slash only if not empty
+  const dataFolder = "";
+
   const timestampMark = Date.now();
   let pages = [];
 
@@ -56,7 +59,7 @@
     const pagePath = pages[pageIndex];
     const [page, section, subSection] = splitPath(pagePath);
 
-    await Promise.all([fetch(`${pagePath}?v=${timestampMark}`)])
+    await Promise.all([fetch(`${dataFolder}${pagePath}?v=${timestampMark}`)])
       .then(async ([response]) => {
         if (response.ok) {
           let content = await response.text();
@@ -104,7 +107,9 @@
     pageContent = pageContent.replace(/```[\s\S]*?```/g, "");
     const headings = pageContent.match(/^(#+)\s+(.+)$/gm);
     return (headings ?? []).map((heading) => {
-      const [_, level, text] = heading.match(/^(#+)\s+(.+)$/);
+      let [_, level, text] = heading.match(/^(#+)\s+(.+)$/);
+      // if text is a markdown link, extract the text
+      text = text.replace(/\[([^\]]+)\]\(.+\)/, "$1");
       return { level: level.length, text };
     });
   }
