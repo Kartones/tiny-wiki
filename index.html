@@ -9,7 +9,6 @@
   <title>Tiny-Wiki</title>
 </head>
 <body>
-  <class="container-fluid">
     <div class="grid">
       <aside>
         <nav>
@@ -17,7 +16,7 @@
           </ul>
         </nav>
       </aside>
-      <div id="content">
+      <div id="content" data-marginleft="250px" data-marginright="200px">
         Loading...
       </div>
       <aside>
@@ -28,10 +27,9 @@
       </aside>
     </div>
 
-    <button id="scroll-up" title="Scroll up to the beginning" aria-label="Scroll up to the beginning" onclick="window.scrollTo(0,0)">
-      <svg width="24" height="24" x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve"><path fill="#fff" d="M181.654,490h126.693V328.495h115.826L245,0L65.828,328.495h115.826V490z M117.396,297.883L245,63.929l127.604,233.954 h-94.87v161.505h-65.469V297.883H117.396z"></path></svg>
+    <button id="asides-toggler">
+      <svg width="24" height="24"><path fill="#fff" d="M6,2H18A2,2 0 0,1 20,4V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V4A2,2 0 0,1 6,2M6,8V16H10V8H6Z"></path></svg>
     </button>
-
     <button id="theme-switcher">
       <svg width="24" height="24"><path fill="#fff" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg>
     </button>

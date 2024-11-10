@@ -2,7 +2,7 @@
 
 (function () {
   // End in slash only if not empty
-  const dataFolder = "";
+  const dataFolder = "md/";
 
   const timestampMark = Date.now();
   let pages = [];
@@ -39,10 +39,13 @@
             }
 
             if (section !== previousSection) {
-              output += `<li>${section.replace(".md", "")}</li>`;
+              output += `<li class="section">${section.replace(
+                ".md",
+                ""
+              )}</li>`;
             }
             if (subSection && subSection !== previousSubSection) {
-              output += `<li>• ${subSection}</li>`;
+              output += `<li class="subsection">• ${subSection}</li>`;
             }
 
             return `${output}<li><a href="#" data-index=${currentIndex} class="${
@@ -170,6 +173,23 @@
         event.preventDefault();
         loadPage(event.target.dataset.index);
       }
+    });
+
+    document.getElementById("asides-toggler").addEventListener("click", () => {
+      const asides = document.getElementsByTagName("aside");
+      for (let i = 0; i < asides.length; i++) {
+        asides[i].style.display =
+          asides[i].style.display === "none" ? "" : "none";
+      }
+      const mainContent = document.getElementById("content");
+      mainContent.style.marginLeft =
+        mainContent.style.marginLeft === "0px"
+          ? mainContent.dataset.marginleft
+          : "0px";
+      mainContent.style.marginRight =
+        mainContent.style.marginRight === "0px"
+          ? mainContent.dataset.marginright
+          : "0px";
     });
 
     marked.use({ renderer });
