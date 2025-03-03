@@ -67,7 +67,9 @@
         if (response.ok) {
           let content = await response.text();
 
-          // Adds the main page title (not present in the markdown files)
+          document.title = page;
+
+          //  page title not present in the markdown files (YMMV here)
           document.getElementById("content").innerHTML = marked.parse(
             `# ${page}\n${content}`
           );
