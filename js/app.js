@@ -45,12 +45,12 @@
               )}</li>`;
             }
             if (subSection && subSection !== previousSubSection) {
-              output += `<li class="subsection">• ${subSection}</li>`;
+              output += `<li class="subsection">${subSection}</li>`;
             }
 
             return `${output}<li><a href="#" data-index=${currentIndex} class="${
               subSection ? "sub" : ""
-            }">• ${page}</a></li>`;
+            }">${page}</a></li>`;
           },
           ""
         );
@@ -120,7 +120,15 @@
   }
 
   function headingId(headingText) {
-    return headingText
+    // Decode HTML entities before generating ID
+    const decoded = headingText
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'");
+
+    return decoded
       .toLowerCase()
       .replace(/[^\w]+/g, "-")
       .replace(/-$/, "");
