@@ -36,6 +36,7 @@ img, video {
   font-size: 0.7em;
   padding-bottom: 0%;
   padding-top: 0%;
+  list-style-type: none;
 }
 
 #headings li {
@@ -48,10 +49,13 @@ li.level-2 {
   padding-left: 1em;
 }
 li.level-3 {
-  padding-left: 2em;
+  padding-left: 1.5em;
 }
 li.level-4 {
-  padding-left: 3em;
+  padding-left: 2em;
+}
+li.level-5 {
+  padding-left: 2.5em;
 }
 
 .sub {
@@ -68,6 +72,11 @@ li.section {
 
 li.subsection {
   font-size: 0.8em !important;
+  padding-left: 1em;
+}
+
+li:not(.section):not(.subsection) {
+  padding-left: 1em;
 }
 
 li > p {
